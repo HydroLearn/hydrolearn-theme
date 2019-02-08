@@ -41,20 +41,30 @@ block_is_unit = is_unit(xblock)
         // this should really be part of the default template... not the xblock.
         var modal_height_pct = 80;
         var modal_width_pct = 80;
-        
+
         var scroll_offset = $('html').scrollTop();
         var left_margin = (100 - modal_width_pct) / 2;
         var top_margin = ((100 - modal_height_pct) / 2);
 
+
+
         $('.modal-window').css({
             "top": "calc(" + top_margin + "% + " + scroll_offset + "px)",
             'left': left_margin + "%" ,
-            "width": modal_width_pct + "vw",
-            "height": modal_height_pct + "vh"
+            // "width": modal_width_pct + "vw",
+            // "height": modal_height_pct + "vh"
         });
 
+        if($('.modal-window').hasClass('modal-type-hl_text')){
+            $('.modal-window').css({
+                "width": modal_width_pct + "vw",
+                "height": modal_height_pct + "vh"
+            });
+        }
+
+
     }
-    
+
     // Readjust modal window dimensions in case the browser window is resized
     window.addEventListener('resize', function() {
         place_modal();
@@ -64,7 +74,7 @@ block_is_unit = is_unit(xblock)
     window.addEventListener('scroll', function() {
         place_modal();
     });
-    
+
 </script>
 
 % if not is_root:
