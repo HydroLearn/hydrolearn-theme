@@ -21,9 +21,11 @@
     padding: 7px;
 
     // ----- custom edit CR
-    display: flex;
-    flex-flow: column;
-    height: 100%;
+    .edit-xblock-modal{
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+    }
     // -----
 
 
@@ -276,7 +278,7 @@
         // ----- custom edit CR
         flex-grow: unset;
         // -----
-        
+
         margin: ($baseline/4) ($baseline/2);
 
         .title {
@@ -313,7 +315,10 @@
       }
 
       .modal-content {
-        height: 435px;
+
+        flex-grow: 1;
+        height:100%;
+        //height: 435px;
         overflow-y: auto;
         overflow-x: hidden;
         padding: 0;
