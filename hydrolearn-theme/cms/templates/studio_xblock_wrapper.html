@@ -65,15 +65,15 @@ block_is_unit = is_unit(xblock)
 
     }
 
+    // add triggerable event for resizing modal
+    $('body').on('resize_modal', place_modal)
+
     // Readjust modal window dimensions in case the browser window is resized
-    window.addEventListener('resize', function() {
-        place_modal();
-    });
+    window.addEventListener('resize', place_modal);
 
     // reposition modal on window scroll
-    window.addEventListener('scroll', function() {
-        place_modal();
-    });
+    window.addEventListener('scroll', place_modal);
+
 
 </script>
 
