@@ -301,12 +301,7 @@ from student.models import CourseEnrollment
               <p>
                 To register as an instructor visit
 
-                <!-- 
-                  TODO: 
-                  replace the following link with an environment setting for the cms url      
-                  <a href="${ settings.CMS_BASE }" target="_blank">studio</a> 
-                -->
-                <a href="http://studio.hydrolearn.org" target="_blank">studio</a>
+                <a href="${ request.scheme }://${ settings.CMS_BASE }" target="_blank">studio</a>
                 and request course creation permissions.
               </p>
               <p>
