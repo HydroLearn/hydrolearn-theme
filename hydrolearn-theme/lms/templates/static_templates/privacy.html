@@ -1,0 +1,9 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("Terms")}</%block>
+<script>
+  window.location.href = 'https://www.hydrolearn.org/terms';
+</script>
+<a href="https://www.hydrolearn.org/terms">Redirecting to Hydrolearn.org/terms. If this doesn't occur automatically, click here.</a>
