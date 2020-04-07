@@ -1,0 +1,330 @@
+// lms - views - homepage view
+// ====================
+// TO-DO: combine this with _home.scss as a cleanup story
+
+// COPIED AS REFERENCE
+// $bp-tiny: new-breakpoint(max-width 320px 4);
+// $bp-small: new-breakpoint(min-width 321px max-width 540px, 4);
+// $bp-medium: new-breakpoint(min-width 541px max-width 768px, 8);
+// $bp-large: new-breakpoint(min-width $large-min-width max-width 979px, 12);
+// $bp-huge:  new-breakpoint(min-width 980px 12);
+
+// $learn-more-horizontal-position: calc(50% - 100px); // calculate the left position for "LEARN MORE" content
+$learn-more-height: $baseline*2.5 ; // calculate the left position for "LEARN MORE" content
+$learn-more-width: $baseline*10; // calculate the left position for "LEARN MORE" content
+
+// these values are used to replace $course-image-height which will
+// now alter appearance based on screen size
+$course-thumbnail-horiz-height: ($baseline*10);
+$course-thumbnail-vert-height: ($baseline*8);
+
+/* mixin for multiline */
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  padding-right:1em;
+  
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+@function aspect-ratio($ratio_w, $ratio_h){
+  @return ($ratio_w/$ratio_h);  
+}
+@function aspect-ratio-h-from-w($ratio, $width){
+  @return $ratio * $width;
+}
+@function aspect-ratio-w-from-h($ratio, $height){
+  @return $height / $ratio;
+}
+
+// aspect-ratio mixin for sizing a container
+@mixin aspect-ratio-container($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.courses-container {
+  @include outer-container;
+
+  .courses {
+    @include row();
+    @include float(left);
+
+    width:100%;
+
+    .courses-listing {
+      @extend %ui-no-list;
+
+      // CRivet modification 3-5-20 ------
+      display: grid;
+      width: 100%;
+      grid-template-columns: 32% 32% 32%;
+      grid-gap: 15px;
+
+      grid-template-columns: 100%;
+
+      @include media($bp-medium) {
+        grid-template-columns: 49% 49%;
+      }
+
+      @include media($bp-large) {
+        grid-template-columns: 49% 49%;
+      }
+
+      @include media($bp-huge) {
+        grid-template-columns: 100%;
+      }
+
+      // ---------------------------------
+
+
+      .courses-listing-item {
+        // margin: 0 0 ($baseline*1.5) 0;
+        
+        
+        // CRivet modification 3-5-20 ------
+        // height: $course-card-height;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        // ---------------------------------
+
+      }
+    }
+
+    .course {
+      @include box-sizing(border-box);
+      @include transition(all $tmg-f3 linear 0s);
+
+      // CRivet modification 3-5-20 ------
+      height: 100%;
+      // ---------------------------------
+
+      position: relative;
+      border-bottom: 3px solid $action-primary-bg;
+      box-shadow: 0 1px 10px 0 $black-t0, inset 0 0 0 1px $white-t3;
+      background: $body-bg;
+      width: 100%;
+      margin:0;
+
+      
+      .course-image { 
+          // vertical layout
+          @include aspect-ratio-container(5, 3);
+
+          @include media($bp-huge) {
+            // horizontal layout
+            @include aspect-ratio-container(6, 4);
+          }
+
+          .cover-image {
+            background: #e5f7ff;
+            text-align: center;
+            overflow: hidden;
+
+
+            // places the shadow on top of the course image while hovering over the course card
+            &::before {
+              @include left(0);
+              @extend %ui-depth1;
+
+              position: absolute;
+              top: 0;
+              opacity: 0;
+              background: $black;
+              width: 100%;
+              height: 100%;
+              content: '';
+            }
+
+            img {
+              // vertically and horizontally center the image
+              position: absolute;
+
+              // put top left corner of image in center of container
+              top: 50%;
+              left: 50%;
+
+              // shift back 50% relative to img height/width
+              transform: translate(-50%, -50%);
+              
+              // expect in most cases we will have wider images than the 
+              // selected aspect ratios
+              height: 100%;
+            }
+
+            .learn-more {
+              // @include left($learn-more-horizontal-position);
+              @include left(calc(50% - #{$learn-more-width/2}));
+              @include box-sizing(border-box);
+
+              @extend %ui-depth2;
+
+              position: absolute;
+              width: ($baseline*10);
+              height: ($baseline*2.5);
+              
+              top: calc(50% - #{$learn-more-height/2});
+              padding: 0 $baseline;
+              
+              border-color: theme-color("primary");
+              border-radius: 3px;
+              background: theme-color("primary");
+              color: $white;
+              line-height: ($baseline*2.5);
+              text-align: center;
+              opacity: 0;
+              text-transform: none;
+            }
+        }
+      }
+
+      .course-info {
+        
+        min-height: $course-info-height;
+        font-family: $font-family-sans-serif;
+        margin: ($baseline*0.5);
+
+        h2 {
+          font-family: $font-family-sans-serif;
+        }
+
+        .course-organization, .course-code, .course-date, .course-weekly-effort {
+          @extend %t-icon6;
+          color: $gray-d2;
+        }
+
+        .course-organization, .course-code, .course-title, .course-weekly-effort {
+          display: block;
+          text-transform: none;
+        }
+
+        .course-organization {
+          @include line-height(11);
+          
+        }
+
+        .course-code {
+          @include line-height(16);
+        }
+
+        .course-title {
+          @include line-height(16);
+          @extend %t-icon4;
+
+          margin: ($baseline*0.25) 0 ($baseline*0.25) 0;
+          color: $link-color;
+        }
+
+        .course-date {
+          @include line-height(14);
+        }
+
+        .course-weekly-effort {
+          @include line-height(14);
+        }
+        .course-description{
+          
+          margin: ($baseline*0.75);
+          .course-description-content{
+            @include multiLineEllipsis(16px, 4, $body-bg);
+            font-size: .75em;
+            color: $gray-d3;
+          }
+        }
+      }
+
+      // STATE: hover and focus
+      &:hover,
+      &:focus {
+        .cover-image {
+          &::before {
+            @include transition(opacity $tmg-f2 ease-out $tmg-f2);
+
+            opacity: 0.6;
+          }
+
+          .learn-more {
+            @include transition(opacity $tmg-f2 ease-out $tmg-f2);
+
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .courses-more {
+    @include margin-right(0);
+
+    text-align: center;
+
+    @include media($large-min-width) {
+      @include margin-right($baseline*0.5);
+      @include text-align(right);
+    }
+
+    .courses-more-cta {
+      font-weight: $font-semibold;
+
+      &::after {
+        content: " ›";
+      }
+    }
+  }
+}
+
+/* Set homepage specific media queries */
+// THIS ISN'T USED IN HYDROLEARN
+//  as we have an external home page for the system
+.home .courses-container .courses .courses-listing .courses-listing-item {
+// .home .courses-container .courses .courses-listing {
+  @include rtl() { $layout-direction: "RTL"; }
+  @include fill-parent();
+
+  @include media($bp-medium) {
+    // @include span-columns(4); // 4 of 8
+    // @include omega(2n);
+  }
+
+  @include media($bp-large) {
+    // @include span-columns(4); // 4 of 12
+    // @include omega(3n);
+  }
+
+  @include media($bp-huge) {
+    // @include span-columns(3); // 3 of 12
+    // @include omega(4n);
+  }
+}
+
+
