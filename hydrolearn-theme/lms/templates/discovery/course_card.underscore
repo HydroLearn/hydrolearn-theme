@@ -38,7 +38,7 @@
             
             <div class='course-weekly-effort' aria-hidden="true">
                 <% if (typeof(effort) != "undefined") { %>
-                    <%- gettext("Effort:") %> <%- effort %> <%- gettext("hrs/wk") %>
+                    <%- gettext("Effort:") %> <%- effort %> <%- gettext("hours") %>
                 <% } %>
             </div>
             

@@ -104,6 +104,7 @@ $facet-background-color: #007db8;
             .course-date{ 
               grid-area: start_date; 
               padding: 0;
+              display: none;
             }
             .course-weekly-effort{ 
               grid-area: effort; 
