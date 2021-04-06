@@ -19,9 +19,15 @@
             <ul class="navbar-nav">
               % for item_num, link in enumerate(footer['navigation_links'], start=1):
                 <li class="nav-item">
-                  <a class="nav-link" href="${link['url']}">${link['title']}</a>
+                  <a class="nav-link" target="_blank" href="${link['url']}">${link['title']}</a>
                 </li>
               % endfor
+
+              ## link for reporting a course added 4/2/20
+              <li class="nav-item">
+                <a class="nav-link" target="_blank" href="/support/contact_us">Report A Course</a>
+              </li>
+
             </ul>
           </nav>
 
@@ -54,11 +60,11 @@
             <ul class="navbar-nav">
               % for item_num, link in enumerate(footer['legal_links'], start=1):
                 <li class="nav-item">
-                  <a class="nav-link" href="${link['url']}">${link['title']}</a>
+                  <a target="_blank"  class="nav-link" href="${link['url']}">${link['title']}</a>
                 </li>
               % endfor
               <li class="nav-item">
-                <a class="nav-link" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
+                <a class="nav-link" target="_blank"  href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a>
               </li>
             </ul>
           </nav>
@@ -71,8 +77,8 @@
           % if not hide_openedx_link:
             <div class="footer-about-openedx">
               <p>
-                <a href="${footer['openedx_link']['url']}">
-                  <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="175" />
+                <a target="_blank" href="${footer['openedx_link']['url']}">
+                  <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
                 </a>
               </p>
             </div>
@@ -96,9 +102,14 @@
           <ol>
               % for item_num, link in enumerate(footer['navigation_links'], start=1):
               <li class="nav-colophon-0${item_num}">
-                <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
+                <a target="_blank"  id="${link['name']}" href="${link['url']}">${link['title']}</a>
               </li>
               % endfor
+
+              ## link for reporting a course added 4/2/20
+              <li class="nav-item">
+                <a target="_blank" style="color:#c43c3c" class="nav-link" href="/support/contact_us">Report A Course</a>
+              </li>
           </ol>
         </nav>
 
@@ -108,7 +119,7 @@
 
         <div class="wrapper-logo">
           <p>
-            <a href="/">
+            <a target="_blank"  href="/">
               ## The default logo is a placeholder.
               ## You can either replace this link entirely or update
               ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
@@ -135,10 +146,10 @@
           <ul>
             % for item_num, link in enumerate(footer['legal_links'], start=1):
               <li class="nav-legal-0${item_num}">
-                <a href="${link['url']}">${link['title']}</a>
+                <a target="_blank" href="${link['url']}">${link['title']}</a>
               </li>
             % endfor
-            <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
+            <!-- <li><a target="_blank" href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li> -->
           </ul>
         </nav>
       </div>
@@ -150,8 +161,8 @@
       % if not hide_openedx_link:
       <div class="footer-about-openedx">
         <p>
-          <a href="${footer['openedx_link']['url']}">
-            <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="175" />
+          <a target="_blank" href="${footer['openedx_link']['url']}">
+            <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
           </a>
         </p>
       </div>
