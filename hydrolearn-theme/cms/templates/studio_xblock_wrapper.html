@@ -38,44 +38,42 @@ block_is_unit = is_unit(xblock)
 
 <script type="text/javascript">
 
-    // Temp removal of custom 'place_modal' method, to verify if platform has addressed this already
+    function place_modal(){
+        // this should really be part of the default template... not the xblock.
+        var modal_height_pct = 80;
+        var modal_width_pct = 80;
 
-    // function place_modal(){
-    //     // this should really be part of the default template... not the xblock.
-    //     var modal_height_pct = 80;
-    //     var modal_width_pct = 80;
-
-    //     var scroll_offset = $('html').scrollTop();
-    //     var left_margin = (100 - modal_width_pct) / 2;
-    //     var top_margin = ((100 - modal_height_pct) / 2);
+        var scroll_offset = $('html').scrollTop();
+        var left_margin = (100 - modal_width_pct) / 2;
+        var top_margin = ((100 - modal_height_pct) / 2);
 
 
 
-    //     $('.modal-window').css({
-    //         "top": "calc(" + top_margin + "% + " + scroll_offset + "px)",
-    //         'left': left_margin + "%" ,
-    //         // "width": modal_width_pct + "vw",
-    //         // "height": modal_height_pct + "vh"
-    //     });
+        $('.modal-window').css({
+            "top": "calc(" + top_margin + "% + " + scroll_offset + "px)",
+            'left': left_margin + "%" ,
+            // "width": modal_width_pct + "vw",
+            // "height": modal_height_pct + "vh"
+        });
 
-    //     if($('.modal-window').hasClass('hl_resize_correction')){
-    //         $('.modal-window').css({
-    //             "width": modal_width_pct + "vw",
-    //             "height": modal_height_pct + "vh"
-    //         });
-    //     }
+        if($('.modal-window').hasClass('hl_resize_correction')){
+            $('.modal-window').css({
+                "width": modal_width_pct + "vw",
+                "height": modal_height_pct + "vh"
+            });
+        }
 
 
-    // }
+    }
 
-    // // add triggerable event for resizing modal
-    // $('body').on('resize_modal', place_modal)
+    // add triggerable event for resizing modal
+    $('body').on('resize_modal', place_modal)
 
-    // // Readjust modal window dimensions in case the browser window is resized
-    // window.addEventListener('resize', place_modal);
+    // Readjust modal window dimensions in case the browser window is resized
+    window.addEventListener('resize', place_modal);
 
-    // // reposition modal on window scroll
-    // window.addEventListener('scroll', place_modal);
+    // reposition modal on window scroll
+    window.addEventListener('scroll', place_modal);
 
 
 </script>
