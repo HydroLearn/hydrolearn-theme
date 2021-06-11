@@ -4,7 +4,7 @@ $mobile_large: 768px;
 $mobile_small: 480px;
 
 /* Home Style 
-	
+  
 header {
 
     background: url(/static/img/HomePageImagry/HomeImage.jpg) no-repeat bottom center;
@@ -71,36 +71,36 @@ header {
 */
 
 .home>header {
-	background: url(/static/hydrolearn-theme/images/HomePageImagry/HomeImage.jpg) no-repeat center 85%;
-	background-size: cover;
+  background: url(/static/hydrolearn-theme/images/HomePageImagry/HomeImage.jpg) no-repeat center 85%;
+  background-size: cover;
 
-	.title {
-		background: transparent;
-		box-shadow: none;
-		text-align: center;
-		
-		h1{
-			color: $HL_blue;
-		}
-		
-		p{
-			color: #fff;
-		}
-	}	
+  .title {
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    
+    h1{
+      color: $HL_blue;
+    }
+    
+    p{
+      color: #fff;
+    }
+  }  
 }
 
 
 #Home_Content .block {
     font-family: $HL_font;
     font-size: 1.2em;
-	line-height:1.2em;
+  line-height:1.2em;
     display: block;
     margin: auto;
     padding: 1em 6em;
-	
-	h1,h2,h3,h4,h5 {
-		font-family: $HL_font;
-	}
+  
+  h1,h2,h3,h4,h5 {
+    font-family: $HL_font;
+  }
 
     h1{
         font-size: 1.8em;
