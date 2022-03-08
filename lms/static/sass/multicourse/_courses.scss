@@ -50,89 +50,12 @@ $facet-background-color: #007db8;
 
     .courses {
       @include rtl() { $layout-direction: "RTL"; }
-      
 
       .courses-listing .courses-listing-item {
         @include fill-parent();
-        
-        // setting custom grid styling to course cards to 
-        // allow for display swap between:
-        //    huge: horizontal
-        //    *: vertical
-        a {
-          display: grid;
-          grid-template-columns: 100%;
-          
-          grid-template-areas: 
-            'thumbnail' 
-            'details';
 
-          .course-image {
-            grid-area: thumbnail;
-          }
-
-          .course-info{
-            grid-area: details;
-
-            display:grid;
-            grid-template-areas: 
-              'title title title title'
-              'org . . code'
-              'desc desc desc desc'
-              'start_date . . effort';
-
-            grid-template-rows: 
-              min-content 
-              min-content
-              auto
-              min-content;
-
-            grid-template-columns: 
-              minmax(100px,135px) auto auto minmax(100px,135px);
-
-            .course-title{ grid-area: title; }
-            .course-description{ grid-area: desc; }
-            .course-organization{ 
-              grid-area: org; 
-              padding: 0;
-            }
-            .course-code{ 
-              grid-area: code; 
-              padding:0;
-            }
-            
-            .course-date{ 
-              grid-area: start_date; 
-              padding: 0;
-              display: none;
-            }
-            .course-weekly-effort{ 
-              grid-area: effort; 
-              padding:0;
-            }
-
-            // shrink down the course extra field info
-            .course-organization,
-            .course-code,
-            .course-date,
-            .course-weekly-effort{ 
-              font-size: 11px;
-              @extend %t-icon7;
-              @include line-height(10);
-            }
-
-            .course-code, .course-weekly-effort{
-              text-align: right;
-            }
-
-
-          }
-
-          @include media($bp-huge) {
-            grid-template-columns: ($baseline*18) 1fr;
-            grid-template-areas: 'thumbnail details';
-          }
-        }
+        margin: ($baseline*0.75) 0 ($baseline*1.5) 0;
+        max-height: $course-card-height;
       }
 
       // CASE: Course Discovery Search enabled
@@ -151,59 +74,57 @@ $facet-background-color: #007db8;
           @include span-columns(9);
         }
 
-        // LEGACY COLUMN STYLING 
-        // .courses-listing .courses-listing-item {
-        //   @include media($bp-medium) {
-        //     // @include span-columns(4); // 4 of 8
-        //     // @include omega(2n);
-        //   }
+        .courses-listing .courses-listing-item {
+          @include media($bp-medium) {
+            @include span-columns(4); // 4 of 8
+            @include omega(2n);
+          }
 
-        //   @include media($bp-large) {
-        //     // @include span-columns(6); // 6 of 12
-        //     // @include omega(2n);
-        //   }
+          @include media($bp-large) {
+            @include span-columns(6); // 6 of 12
+            @include omega(2n);
+          }
 
-        //   @include media($bp-huge) {
-        //     // @include span-columns(4); // 4 of 12
-        //     // @include omega(3n);
-        //   }
-        // }
+          @include media($bp-huge) {
+            @include span-columns(4); // 4 of 12
+            @include omega(3n);
+          }
+        }
       }
 
       // CASE: Course Discovery Search disabled
       &.no-course-discovery {
         @include span-columns(12);
 
-        // LEGACY COLUMN STYLING
-        // @include media($bp-medium) {
-        //   // @include span-columns(8); // 8 of 8
-        //   // @include omega(2n);
-        // }
+        @include media($bp-medium) {
+          @include span-columns(8); // 8 of 8
+          @include omega(2n);
+        }
 
-        // @include media($bp-large) {
-        //   // @include span-columns(12);
-        // }
+        @include media($bp-large) {
+          @include span-columns(12);
+        }
 
-        // @include media($bp-huge) {
-        //   // @include span-columns(12);
-        // }
+        @include media($bp-huge) {
+          @include span-columns(12);
+        }
 
-        // .courses-listing .courses-listing-item {
-        //   @include media($bp-medium) {
-        //     // @include span-columns(4); // 4 of 8
-        //     // @include omega(2n);
-        //   }
+        .courses-listing .courses-listing-item {
+          @include media($bp-medium) {
+            @include span-columns(4); // 4 of 8
+            @include omega(2n);
+          }
 
-        //   @include media($bp-large) {
-        //     // @include span-columns(4); // 4 of 12
-        //     // @include omega(3n);
-        //   }
+          @include media($bp-large) {
+            @include span-columns(4); // 4 of 12
+            @include omega(3n);
+          }
 
-        //   @include media($bp-huge) {
-        //     // @include span-columns(3); // 3 of 12
-        //     // @include omega(4n);
-        //   }
-        // }
+          @include media($bp-huge) {
+            @include span-columns(3); // 3 of 12
+            @include omega(4n);
+          }
+        }
       }
     }
   }
