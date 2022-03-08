@@ -40,6 +40,48 @@ block_is_unit = is_unit(xblock)
     );
 </script>
 
+<script type="text/javascript">
+
+    function place_modal(){
+        // this should really be part of the default template... not the xblock.
+        var modal_height_pct = 95;
+        var modal_width_pct = 95;
+
+        var scroll_offset = $('html').scrollTop();
+        var left_margin = (100 - modal_width_pct) / 2;
+        var top_margin = ((100 - modal_height_pct) / 2);
+
+
+
+        $('.modal-window').css({
+            "top": "calc(" + top_margin + "% + " + scroll_offset + "px)",
+            'left': left_margin + "%" ,
+            // "width": modal_width_pct + "vw",
+            // "height": modal_height_pct + "vh"
+        });
+
+        if($('.modal-window').hasClass('hl_resize_correction')){
+            $('.modal-window').css({
+                "width": modal_width_pct + "vw",
+                "height": modal_height_pct + "vh"
+            });
+        }
+
+
+    }
+
+    // add triggerable event for resizing modal
+    $('body').on('resize_modal', place_modal)
+
+    // Readjust modal window dimensions in case the browser window is resized
+    window.addEventListener('resize', place_modal);
+
+    // reposition modal on window scroll
+    window.addEventListener('scroll', place_modal);
+
+
+</script>
+
 % if not is_root:
     % if is_reorderable:
     <li class="studio-xblock-wrapper is-draggable" data-locator="${xblock.location}" data-course-key="${xblock.location.course_key}">

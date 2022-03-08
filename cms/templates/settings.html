@@ -231,6 +231,7 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
               <div class="field time" id="field-course-start-time">
                 <label for="course-start-time">${_("Course Start Time")}</label>
                 <input type="text" class="time start timepicker" id="course-start-time" value="" placeholder="HH:MM" autocomplete="off" />
+                <span class="icon icon-inline fa fa-calendar-check-o datepicker-icon" aria-hidden="true"></span>
                 <span class="tip tip-stacked timezone">${_("(UTC)")}</span>
               </div>
             </li>
@@ -250,7 +251,6 @@ CMS.URL.UPLOAD_ASSET = '${upload_asset_url | n, js_escaped_string}'
               </div>
             </li>
           </ol>
-
           <%
             use_v2_cert_display_settings = settings.FEATURES.get("ENABLE_V2_CERT_DISPLAY_SETTINGS", False)
           %>
