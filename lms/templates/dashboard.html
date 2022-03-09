@@ -213,6 +213,7 @@ from common.djangoapps.student.models import CourseEnrollment
                 course_mode_info = all_course_modes.get(session_id)
                 is_paid_course = True if entitlement else (session_id in enrolled_courses_either_paid)
                 is_course_voucher_refundable = (session_id in enrolled_courses_voucher_refundable)
+                course_verification_status = verification_status_by_course.get(session_id, {})
                 course_requirements = courses_requirements_not_met.get(session_id)
                 related_programs = inverted_programs.get(six.text_type(entitlement.course_uuid if is_unfulfilled_entitlement else session_id))
                 show_consent_link = (session_id in consent_required_courses)
