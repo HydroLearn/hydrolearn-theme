@@ -1,19 +1,16 @@
 <%page expression_filter="h"/>
 
 <%!
-from django.urls import reverse
 from django.utils.translation import ugettext as _
 
 from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
 %>
 
 <%inherit file="../main.html"/>
-<%namespace file='../main.html' import="login_query"/>
-<%namespace name='static' file='../static_content.html'/>
 
 <%block name="title">
     <title>
-        ${_("Contact {platform_name}").format(platform_name=platform_name)}
+        ${_("Contact HydroLearn")}
     </title>
 </%block>
 
@@ -50,8 +47,8 @@ from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_j
                         If you need assistance with a course, please contact the 
                         course instructor. Otherwise, if you are experiencing 
                         technical issues you can 
-                        <a href="mailto:${support_email | n}">contact the HydroLearn team</a> 
-                        at <a href="mailto:${support_email | n}">${support_email | n}</a>.
+                        <a href="mailto:contact@hydrolearn.org">contact the HydroLearn team</a> 
+                        at <a href="mailto:contact@hydrolearn.org">contact@hydrolearn.org</a>.
                     </p>
                 </div>
             </div>
