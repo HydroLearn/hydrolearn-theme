@@ -9,4 +9,4 @@ i.e. i needed to include
 'lms/static/sass/lms-main-v1.scss' which includes
 'lms/static/sass/_build-base-v1.scss' which includes the reference to '_homepage.scss'
 
-  all of these files must be present in the theme!
+	all of these files must be present in the theme!

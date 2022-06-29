@@ -1,0 +1,19 @@
+<%page expression_filter="h"/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.urls import reverse
+
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<script>
+	var debug = false;
+	if(debug){
+		window.location.href = 'http://edx.hl-dev.org/dashboard';
+	}else{
+		window.location.href = 'https://hydrolearn.org/';
+	}
+  
+</script>
+<a href="https://hydrolearn.org/">Redirecting to Hydrolearn.org. If this doesn't occur automatically, click here.</a>
