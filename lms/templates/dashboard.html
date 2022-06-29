@@ -294,6 +294,32 @@ from common.djangoapps.student.models import CourseEnrollment
           </div>
           <div id="dashboard-search-results" class="search-results dashboard-search-results"></div>
         % endif
+
+        <%block name="skip_links">
+          % if settings.FEATURES.get('ENABLE_ANNOUNCEMENTS'):
+            <a id="announcements-skip" class="nav-skip sr-only sr-only-focusable" href="#announcements">${_("Skip to list of announcements")}</a>
+          % endif
+        </%block>
+        % if settings.FEATURES.get('ENABLE_ANNOUNCEMENTS'):
+          <%include file='dashboard/_dashboard_announcements.html' />
+        % endif
+
+        <div>
+            <div class="instructor_msg">
+              <h2>Are you an Instructor?</h2>
+              <p>
+                To register as an instructor, sign in to
+
+                <a href="${ request.scheme }://${ settings.CMS_BASE }/home" target="_blank">studio.hydrolearn</a>
+                and request course creation permissions.
+              </p>
+              <p>
+                After review, we will email you regarding our decision.
+              </p>
+            </div>
+
+        </div>
+
       </div>
     </div>
 </main>
