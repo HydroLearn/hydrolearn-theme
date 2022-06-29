@@ -315,6 +315,22 @@ from common.djangoapps.student.models import CourseEnrollment
             </div>
           </div>
         % endif
+        <div>
+            <div class="instructor_msg">
+              <h2>Are you an Instructor?</h2>
+              <p>
+                To register as an instructor, sign in to
+
+                <a href="${ request.scheme }://${ settings.CMS_BASE }/home" target="_blank">studio.hydrolearn</a>
+                and request course creation permissions.
+              </p>
+              <p>
+                After review, we will email you regarding our decision.
+              </p>
+            </div>
+
+        </div>
+
       </div>
     </div>
 </main>
