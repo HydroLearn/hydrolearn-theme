@@ -57,7 +57,8 @@ from openedx.core.lib.courses import course_image_url
 <section class="course-info">
 
   <%block name="course_about_header">
-  <header class="course-profile">
+  <!-- added height:unset to account for cut off course profiles-->
+  <header class="course-profile" style="height:unset;">
     <div class="intro-inner-wrapper">
       <div class="table">
       <section class="intro">
@@ -159,12 +160,12 @@ from openedx.core.lib.courses import course_image_url
 
         <%block name="course_about_important_dates">
         <ol class="important-dates">
-          <li class="important-dates-item"><span class="icon fa fa-info-circle" aria-hidden="true" title="Link to create tar.gz file of course"></span><p class="important-dates-item-title">${_("Course Export")}</p><a class="important-dates-item-text course-export" href="${studio_export_url}">Export Link</a></li>
-          <li class="important-dates-item">
-              <span class="icon fa fa-info-circle" aria-hidden="true"></span>
-              <p class="important-dates-item-title">${_("Course Number")}</p>
-              <span class="important-dates-item-text course-number">${course.display_number_with_default}</span>
-          </li>
+          <!-- Added 9-9-19 -->
+          %if studio_export_url:
+          <li class="important-dates-item"><span class="icon fa fa-info-circle" aria-hidden="true" title="Link to create tar.gz file of course"></span><p class="important-dates-item-title">${_("Course Export")}</p><a class="important-dates-item-text course-export" href="${studio_export_url}">Export Link</a><br><br><p style="font-size:.75em;">To customize this course for your own needs, export a copy and import into a new empty course inside Studio. Requires a HydroLearn instructor Studio account.</p></li>
+          %endif
+          
+          <li class="important-dates-item"><span class="icon fa fa-info-circle" aria-hidden="true"></span><p class="important-dates-item-title">${_("Course Number")}</p><span class="important-dates-item-text course-number">${course.display_number_with_default}</span></li>
           % if not course.start_date_is_still_default:
               <%
                   course_start_date = course.advertised_start or course.start
