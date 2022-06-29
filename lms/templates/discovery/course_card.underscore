@@ -7,16 +7,38 @@
             </div>
         </header>
         <section class="course-info" aria-hidden="true">
-            <h2 class="course-name">
+            <!-- <h2 class="course-name"> 
                 <span class="course-organization"><%- org %></span>
                 <span class="course-code"><%- content.number %></span>
                 <span class="course-title"><%- content.display_name %></span>
-            </h2>
+            </h2> -->
+
+            <div class="course-organization"><%- org %></div>
+            <div class="course-code"><%- content.number %></div>
+            <div class="course-title"><%- content.display_name %></div>
+            
+            <div class='course-description' aria-hidden="true">
+                <div class='course-description-content'>
+                <% if (typeof(content.short_description) != "undefined") { %>
+                    <%- content.short_description %>
+                <% } else { %>
+                    <%- gettext("No Description Available.") %>
+                <% } %>
+                </div>
+            </div>
+            
+
             <div class="course-date" aria-hidden="true">
                 <%- interpolate(
                       gettext("Starts: %(start_date)s"),
                       { start_date: start }, true
                     ) %>
+            </div>
+        
+            <div class='course-weekly-effort' aria-hidden="true">
+                <% if (typeof(effort) != "undefined") { %>
+                    <%- gettext("Effort:") %> <%- effort %> <%- gettext("hours") %>
+                <% } %>
             </div>
         </section>
         <div class="sr">
@@ -24,6 +46,12 @@
                 <li><%- org %></li>
                 <li><%- content.number %></li>
                 <li><%- gettext("Starts") %><time itemprop="startDate" datetime="<%- start %>"><%- start %></time></li>
+                <% if (typeof(effort) != "undefined") { %>
+                <li><%- gettext("Effort:") %> <%- effort %> <%- gettext("hours per week") %></li>
+                <% }%>
+                <% if (typeof(short_description) != "undefined") { %>
+                <li><%- gettext("Description:") %> <%- short_description %></li>
+                <% }%>
             </ul>
         </div>
     </a>
