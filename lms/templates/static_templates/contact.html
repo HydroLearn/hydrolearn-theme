@@ -1,0 +1,80 @@
+<%page expression_filter="h"/>
+
+<%!
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+
+from openedx.core.djangolib.js_utils import js_escaped_string, dump_js_escaped_json
+%>
+
+<%inherit file="../main.html"/>
+<%namespace file='../main.html' import="login_query"/>
+<%namespace name='static' file='../static_content.html'/>
+
+<%block name="title">
+    <title>
+        ${_("Contact {platform_name}").format(platform_name=platform_name)}
+    </title>
+</%block>
+
+<%block name="head_extra">
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</%block>
+
+<%block name="body">
+
+    <div class="container">
+        <div class="contact-us-wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Contact Us</h2>
+                </div>
+            </div>
+            <div class="row form-errors"></div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>For answers to common questions asked by learners, browse our frequently asked questions.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="https://www.hydrolearn.org/help" class="btn btn-secondary help-button">
+                        Search the HydroLearn FAQ
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>
+                        If you need assistance with a course, please contact the 
+                        course instructor. Otherwise, if you are experiencing 
+                        technical issues you can 
+                        <a href="mailto:${support_email | n}">contact the HydroLearn team</a> 
+                        at <a href="mailto:${support_email | n}">${support_email | n}</a>.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <hr>
+                <div class="col-sm-12">
+                    <p>
+                        If you are contacting us to <span style="font-weight:bold;">Report a course</span> for inappropriate content, Please include:                        
+                    </p>
+                    <ul>
+                        <li>The <span style="font-weight:bold;">Course's Orgainization and Course Number</span>. This can be found on the courses about page, or in the header when viewing the course.</li>
+                        <li>A <span style="font-weight:bold;">URL Link to the Course</span> or Course Section containing the inapproptiate content.</li>
+                        <li>A <span style="font-weight:bold;">Description</span> of the inappropriate content.</li>
+
+                    </ul>
+                    <p>For more details about reporting copyright and/or abusive material, read our <a href="https://www.hydrolearn.org/terms" target="_blank">Terms of Use</a>.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    
+</%block>
