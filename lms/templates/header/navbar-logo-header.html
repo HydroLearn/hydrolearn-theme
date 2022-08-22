@@ -27,7 +27,9 @@ enterprise_customer_link = get_enterprise_learner_portal(request)
         % endif
     </a>
   % else:
-    <a href="${branding_api.get_home_url()}">
+    <!-- <a href="${branding_api.get_home_url()}"> -->
+    <!-- edited to link back to Frontend Website from logo -->
+    <a href="https://hydrolearn.org">
       <%block name="navigation_logo">
         <img  class="logo" src="${branding_api.get_logo_url(is_secure)}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
       </%block>
