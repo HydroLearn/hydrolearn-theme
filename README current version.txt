@@ -1,1 +1,1 @@
-open-release/nutmeg.2
+open-release/sumac.3
