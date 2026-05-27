@@ -6,11 +6,52 @@
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="container about">
-        <h1>
-            <%block name="pageheader">${page_header or _("Contact")}</%block>
-        </h1>
-        <p>
-            <%block name="pagecontent">${page_content or _("This page left intentionally blank. Feel free to add your own content.")}</%block>
-        </p>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Contact Us</h2>
+            </div>
+        </div>
+        <div class="row form-errors"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <p>For answers to common questions asked by learners, browse our frequently asked questions.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="https://www.hydrolearn.org/help" class="btn btn-secondary help-button">
+                    Search the HydroLearn FAQ
+                </a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <p>
+                    If you need assistance with a course, please contact the 
+                    course instructor. Otherwise, if you are experiencing 
+                    technical issues you can 
+                    <a href="mailto:contact@hydrolearn.org">contact the HydroLearn team</a> 
+                    at <a href="mailto:contact@hydrolearn.org">contact@hydrolearn.org</a>.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <hr>
+            <div class="col-sm-12">
+                <p>
+                    If you are contacting us to <span style="font-weight:bold;">Report a course</span> for inappropriate content, Please include:                        
+                </p>
+                <ul>
+                    <li>The <span style="font-weight:bold;">Course's Orgainization and Course Number</span>. This can be found on the courses about page, or in the header when viewing the course.</li>
+                    <li>A <span style="font-weight:bold;">URL Link to the Course</span> or Course Section containing the inapproptiate content.</li>
+                    <li>A <span style="font-weight:bold;">Description</span> of the inappropriate content.</li>
+
+                </ul>
+                <p>For more details about reporting copyright and/or abusive material, read our <a href="https://www.hydrolearn.org/terms" target="_blank">Terms of Use</a>.</p>
+            </div>
+        </div>
     </section>
 </main>
